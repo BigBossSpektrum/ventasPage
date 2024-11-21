@@ -26,4 +26,4 @@ def profile_redirect(request):
         return redirect('buyer_dashboard')  # Redirige al comprador
     elif request.user.is_seller:
         return redirect('seller_dashboard')  # Redirige al vendedor
-    return redirect('home')g
+    return redirect('home')
