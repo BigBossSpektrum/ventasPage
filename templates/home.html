@@ -1,26 +1,63 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css\product_list.css' %}">
+
+    <script src="{% static 'js\product_list.js' %}"></script>
+
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'static/css/home.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Platform</h1>
-        <nav>
+    <div class="grid-container">
+        <header>
+            <h1>Bienvenido a MyPlatform</h1>
             <ul>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'product_list' %}">product_list</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <p>This is the main page of our platform.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 MyPlatform</p>
-    </footer>
+            <div>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <a href="{% url 'profile' %}">{{ user.username }}</a>
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </header>
+        <menu>
+            <li>
+                <a href="">Comprar</a>
+            </li>
+            <li>
+                <a href="">Vender</a>
+            </li>
+            <li>
+                <a href="">Carrito</a>
+            </li>
+        </menu>
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+        <footer>
+            <p>&copy; 2024 MyPlatform</p>
+        </footer>
+    </div>
 </body>
 </html>

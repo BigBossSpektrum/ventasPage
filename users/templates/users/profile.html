@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Perfil de Usuario</h2>
+    <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Nombre Completo:</strong> {{ user.full_name }}</p>
+    <p><strong>Direccion:</strong> {{ user.address }}</p>
+
+    <a href="{% url 'home' %}" class="btn">Volver al Inicio</a>
+</div>
+{% endblock %}

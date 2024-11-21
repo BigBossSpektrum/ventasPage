@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'core',
     'products',
     'purchases',
-    'core',
     'django.contrib.sites',  # Necesario para allauth
     'allauth',
     'allauth.account',
@@ -127,7 +127,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# Directorio de archivos estáticos
+STATIC_URL = '/static/'
+
+# Directorios donde buscar archivos estáticos
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Asegúrate de tener esta carpeta creada en tu proyecto
+]
+
+# Directorio donde se recopilan los archivos estáticos
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -144,7 +153,15 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+LOGOUT_REDIRECT_URL = 'home'
+
+
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

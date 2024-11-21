@@ -1,0 +1,64 @@
+/* Estilos generales */
+
+.view {
+    display: none;
+}
+
+#list-view {
+    display: block;
+}
+
+#list-view table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#list-view th, #list-view td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#list-view th {
+    background-color: #f4f4f4;
+}
+
+/* Estilos para la vista en cuadrícula */
+#grid-view {
+    display: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item h3 {
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    color: #555;
+}
+
+/* Estilos para los botones de vista */
+.view-toggle button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.view-toggle button:hover {
+    background-color: #0056b3;
+}
