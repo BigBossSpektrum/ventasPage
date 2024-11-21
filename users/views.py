@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import CustomUserCreationForm
 
 
 def login_redirect(request):
@@ -27,3 +30,8 @@ def profile_redirect(request):
     elif request.user.is_seller:
         return redirect('seller_dashboard')  # Redirige al vendedor
     return redirect('home')
+
+class SignUpView(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'users/signup.html'
+    success_url = reverse_lazy('login')  # Redirige al login después del registro

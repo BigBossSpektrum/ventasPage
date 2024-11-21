@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .forms import CustomUserCreationForm
 
 class CustomUserCreationForm(UserCreationForm):
     is_buyer = forms.BooleanField(required=False, initial=True)

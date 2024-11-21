@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'products',
     'purchases',
+    'core',
     'django.contrib.sites',  # Necesario para allauth
     'allauth',
     'allauth.account',
@@ -146,3 +147,4 @@ LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',
 }
+

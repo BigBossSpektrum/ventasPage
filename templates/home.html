@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'static/css/home.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>This is the main page of our platform.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 MyPlatform</p>
+    </footer>
+</body>
+</html>
