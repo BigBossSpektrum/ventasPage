@@ -1,19 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-</head>
-<body>
+{% extends 'home.html' %}
+
+{% block content %}
     <h1>Product List</h1>
-    <ul>
-        {% for product in products %}
-            <li>
-                <strong>{{ product.name }}</strong> - ${{ product.price }}
-                <p>{{ product.description }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+
+    <!-- Filtro por Categoría -->
+    <div id="category-filter">
+        <h3>Filtrar por Categoría</h3>
+        <form method="get">
+            {% for category in categories %}
+                <button type="submit" name="category" value="{{ category.id }}">
+                    {{ category.name }}
+                </button>
+            {% endfor %}
+        </form>
+    </div>
+
+    <!-- Vista en Lista -->
+    <div id="list-view" class="product-list view">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Vendedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>${{ product.price }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.seller.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
