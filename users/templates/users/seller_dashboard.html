@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/seller_dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ user.full_name }} (Seller)</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">Manage Products</a></li>
+                <li><a href="{% url 'add_product' %}">Add New Product</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="dashboard">
+        <h2>Your Products</h2>
+        <p>Here you can view and manage the products you have listed for sale.</p>
+        <!-- You can integrate dynamic content to show products or orders -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ecommerce</p>
+    </footer>
+</body>
+</html>

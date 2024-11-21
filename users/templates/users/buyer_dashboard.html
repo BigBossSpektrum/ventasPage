@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/buyer_dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ user.full_name }} (Buyer)</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cart_detail' %}">My Cart</a></li>
+                <li><a href="{% url 'product_list' %}">Browse Products</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="dashboard">
+        <h2>Your Recent Orders</h2>
+        <p>Here you can see your most recent orders.</p>
+        <!-- You can integrate dynamic content such as recent purchases or offers -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ecommerce</p>
+    </footer>
+</body>
+</html>
