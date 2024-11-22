@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css\home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css\product_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css\available.css' %}">
+    <link rel="stylesheet" href="{% static 'css\login.css' %}">
+    <link rel="stylesheet" href="{% static 'css\profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css\signup.css' %}">
+
 
     <script src="{% static 'js\product_list.js' %}"></script>
 
@@ -43,7 +47,7 @@
         </header>
         <menu>
             <li>
-                <a href="">Comprar</a>
+                <a href="{% url 'available_products' %}">Comprar</a>
             </li>
             <li>
                 <a href="">Vender</a>

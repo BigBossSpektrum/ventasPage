@@ -22,7 +22,6 @@ class CustomUserCreationForm(UserCreationForm):
             user.save()
         return user
     
-
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'users/signup.html'

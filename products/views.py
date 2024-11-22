@@ -18,9 +18,9 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         queryset = Product.objects.all()
-        category_id = self.request.GET.get('category')  # Obtener el filtro de categoría
+        category_id = self.request.GET.get('category')  # Obtener el filtro de categoría desde el GET
         if category_id:
-            queryset = queryset.filter(category__id=category_id)  # Filtrar por categoría usando category
+            queryset = queryset.filter(category__id=category_id)  # Filtrar por ID de categoría
         return queryset
 
 @login_required

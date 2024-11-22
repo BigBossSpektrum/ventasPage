@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h1>Productos en Venta</h1>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>${{ product.price }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>
+                        {% if product.is_available %}
+                            <span class="status available">Disponible</span>
+                        {% else %}
+                            <span class="status out-of-stock">Agotado</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.is_available %}
+                            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                {% csrf_token %}
+                                <button type="submit">Agregar al Carrito</button>
+                            </form>
+                        {% else %}
+                            <button disabled>Agotado</button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

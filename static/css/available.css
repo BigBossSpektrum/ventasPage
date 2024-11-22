@@ -1,3 +1,13 @@
+.status.available {
+    color: green;
+    font-weight: bold;
+}
+
+.status.out-of-stock {
+    color: red;
+    font-weight: bold;
+}
+
 /* Estilo para la tabla */
 .product-table {
     width: 100%;

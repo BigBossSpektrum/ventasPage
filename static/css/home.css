@@ -18,7 +18,7 @@ footer {
     grid-area: d;
     background-color: #282bda;
 }
-
+    
 .grid-container {
     display: grid;
     grid-template-areas:

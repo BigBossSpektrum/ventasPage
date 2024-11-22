@@ -15,14 +15,15 @@
         </form>
     </div>
 
-    <!-- Vista en Lista -->
-    <div id="list-view" class="product-list view">
+    <!-- Vista de Productos -->
+    <div id="list-view">
         <table>
             <thead>
                 <tr>
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Descripción</th>
+                    <th>Categoría</th>
                     <th>Vendedor</th>
                 </tr>
             </thead>
@@ -32,11 +33,14 @@
                         <td>{{ product.name }}</td>
                         <td>${{ product.price }}</td>
                         <td>{{ product.description }}</td>
+                        <td>{{ product.category.name }}</td>
                         <td>{{ product.seller.username }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
+            {% if user.is_authenticated and user.is_seller %}
+                <a href="{% url 'add_product' %}" class="btn btn-primary">Agregar Producto</a>
+            {% endif %}
         </table>
     </div>
-
 {% endblock %}
