@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Vista para listar productos con filtrado por categoría usando ListView
 class ProductListView(ListView):
     model = Product
-    template_name = 'products/product_list.html'
+    template_name = 'product_list.html'
     context_object_name = 'products'
 
     def get_context_data(self, **kwargs):
@@ -36,3 +36,5 @@ def sell_product(request):
         form = ProductForm()
 
     return render(request, 'sell_product.html', {'form': form})
+
+

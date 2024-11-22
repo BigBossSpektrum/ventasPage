@@ -1,8 +1,12 @@
-/* Estilo para la tabla */
+/* Estilo general para la tabla */
 .product-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .product-table th, .product-table td {
@@ -11,37 +15,54 @@
     text-align: left;
 }
 
+/* Estilos para los encabezados de la tabla */
 .product-table th {
-    background-color: #f4f4f4;
+    background-color: #4CAF50;
+    color: white;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
+/* Filas alternas con color suave */
 .product-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/* Estilo de las celdas de la tabla */
 .product-table td {
     vertical-align: middle;
+    font-size: 14px;
 }
 
-/* Estilos para el estado de los productos */
+/* Mejorar el efecto al pasar el mouse sobre las filas */
+.product-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Estilo para el estado de los productos */
 .status {
     padding: 5px 10px;
     border-radius: 3px;
     font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
+/* Estilo cuando el producto está disponible */
 .status.available {
     color: green;
     background-color: #d4edda;
 }
 
+/* Estilo cuando el producto está fuera de stock */
 .status.out-of-stock {
     color: red;
     background-color: #f8d7da;
 }
 
-/* Estilos para el botón */
+/* Estilo para el botón */
 button {
     padding: 10px 15px;
     font-size: 14px;
@@ -50,6 +71,7 @@ button {
     background-color: #007bff;
     color: white;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -58,5 +80,80 @@ button:hover {
 
 button:disabled {
     background-color: #d6d6d6;
+    cursor: not-allowed;
+}
+
+/* Estilo para los botones de acción (añadir, editar, eliminar) */
+button.action-button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #28a745; /* Verde para las acciones positivas */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button.action-button:hover {
+    background-color: #218838;
+}
+
+button.delete-button {
+    background-color: #dc3545; /* Rojo para la acción de eliminar */
+}
+
+button.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para el contenedor de la tabla */
+.table-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el encabezado de la tabla */
+.table-container h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Paginación (si es necesario) */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination a.disabled {
+    background-color: #e9ecef;
+    color: #ccc;
     cursor: not-allowed;
 }

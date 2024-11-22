@@ -49,7 +49,7 @@ def signup_view(request):
             messages.error(request, 'Hubo un error al crear el usuario. Verifica los datos ingresados.')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'users/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):

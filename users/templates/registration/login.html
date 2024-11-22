@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'static/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
+        
         {% if form.errors %}
             <div class="alert alert-danger">
                 {{ form.errors }}
             </div>
         {% endif %}
+        
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -27,7 +29,8 @@
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
+
         <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
-    </div>  
+    </div>
 </body>
 </html>
