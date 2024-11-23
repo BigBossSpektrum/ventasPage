@@ -6,7 +6,8 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'description', 'price', 'stock', 'category']
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4, 'cols': 40}),
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'is_available': forms.CheckboxInput(),
         }
 
 @property

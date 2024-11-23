@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic import ListView
 from .models import Product, Category
 from .forms import ProductForm
@@ -35,19 +36,26 @@ def sell_product(request):
     else:
         form = ProductForm()
 
-    return render(request, 'sell_product.html', {'form': form})
+    return render(request, 'products/sell_product.html', {'form': form})
 
-
-@login_required(login_url='login')
+@login_required
 def sell_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
+        form = ProductForm(request.POST)
         if form.is_valid():
+            # Guardar el nuevo producto en la base de datos
             product = form.save(commit=False)
-            product.seller = request.user
+            product.seller = request.user  # Asocia el producto al usuario autenticado
             product.save()
-            return redirect('product_list')  # Redirige a la lista de productos después de guardar
+
+            # Mensaje de éxito
+            messages.success(request, '¡Producto vendido con éxito!')
+            return redirect('home')  # Redirige a la página principal o a donde quieras
+
+        else:
+            messages.error(request, 'Hubo un error al registrar el producto. Por favor, verifica los datos.')
+
     else:
         form = ProductForm()
 
-    return render(request, 'products/sell_product.html', {'form': form})
+    return render(request, 'sell_product.html', {'form': form})

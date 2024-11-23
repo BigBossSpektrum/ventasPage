@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css\buy.css' %}">
     <link rel="stylesheet" href="{% static 'css\login.css' %}">
     <link rel="stylesheet" href="{% static 'css\profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css\sell_product.css' %}">
 
 
     <script src="{% static 'js\product_list.js' %}"></script>
@@ -22,7 +23,7 @@
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'product_list' %}">Lista de Productos</a></li>
-                <li><a href="{% url 'sell_product' %}">Vender Productos</a></li>
+                <!-- <li><a href="{% url 'sell_product' %}">Vender Productos</a></li> -->
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
             </ul>
@@ -50,7 +51,7 @@
                 <a href="{% url 'available_products' %}">Comprar</a>
             </li>
             <li>
-                <a href="">Vender</a>
+                <a href="{% url 'sell_product' %}">Vender</a>
             </li>
             <li>
                 <a href="">Carrito</a>
