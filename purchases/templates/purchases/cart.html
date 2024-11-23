@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Mi Carrito</h1>
+    {% if cart_items %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>${{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.product.price|floatformat:2 }}</td>
+                    <td>
+                        <!-- Botón para eliminar -->
+                        <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3>Total: ${{ total|floatformat:2 }}</h3>
+        <a href="{% url 'checkout' %}" class="btn-checkout">Finalizar Compra</a>
+    {% else %}
+        <p>No hay productos en el carrito.</p>
+    {% endif %}
+</div>
+{% endblock %}

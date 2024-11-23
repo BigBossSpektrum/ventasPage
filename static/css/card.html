@@ -1,0 +1,98 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título principal */
+.container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table th,
+table td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #f1f9f1;
+}
+
+/* Total del carrito */
+.container h3 {
+    text-align: right;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Botón de compra */
+a[href*="checkout"] {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    margin: 10px auto;
+    transition: background-color 0.3s ease;
+}
+
+a[href*="checkout"]:hover {
+    background-color: #45a049;
+}
+
+/* Mensaje cuando el carrito está vacío */
+.container p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    table th,
+    table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    a[href*="checkout"] {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
