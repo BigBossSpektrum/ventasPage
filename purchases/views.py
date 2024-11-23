@@ -36,7 +36,7 @@ def remove_from_cart(request, item_id):
 # Listar productos disponibles
 def available_products(request):
     products = Product.objects.all()
-    return render(request, 'purchases/available.html', {'products': products})
+    return render(request, 'purchases/buy.html', {'products': products})
 
 def is_seller(user):
     return user.is_authenticated and user.is_seller
@@ -54,3 +54,17 @@ def add_product(request):
         form = ProductForm()
 
     return render(request, 'products/add_product.html', {'form': form})
+
+@login_required
+def sell_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.seller = request.user  # Asociar el producto con el vendedor
+            product.save()
+            return redirect('product_list')  # Redirige a la lista de productos después de guardar
+    else:
+        form = ProductForm()
+
+    return render(request, 'purchases/sell_product.html', {'form': form})

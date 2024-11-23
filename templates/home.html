@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css\home.css' %}">
     <link rel="stylesheet" href="{% static 'css\product_list.css' %}">
-    <link rel="stylesheet" href="{% static 'css\available.css' %}">
+    <link rel="stylesheet" href="{% static 'css\buy.css' %}">
     <link rel="stylesheet" href="{% static 'css\login.css' %}">
     <link rel="stylesheet" href="{% static 'css\profile.css' %}">
 
@@ -24,6 +24,7 @@
                 <li><a href="{% url 'product_list' %}">Lista de Productos</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
+                <li><a href="{% url 'sell_product' %}">Vender Productos</a></li>
             </ul>
             <div>
                 {% if user.is_authenticated %}
