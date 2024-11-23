@@ -155,6 +155,8 @@ LOGOUT_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = 'home'
 
+LOGIN_URL = 'registration/login'  # Cambia 'login' por el nombre de tu ruta de inicio de sesión
+
 
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomUserCreationForm',

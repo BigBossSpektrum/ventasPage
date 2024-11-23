@@ -13,15 +13,15 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.IntegerField(default=0)  # Agregar stock (si lo necesitas)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")  # Relación a categorías
-    seller = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='products_for_sale', on_delete=models.CASCADE
-    )
-    is_sold = models.BooleanField(default=False)
+    stock = models.IntegerField(default=0)  # Indica la cantidad en inventario
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
+    seller = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='products_for_sale', on_delete=models.CASCADE)
+    is_sold = models.BooleanField(default=False)  # Indica si el producto está vendido
+    is_available = models.BooleanField(default=True)  # Nuevo campo para indicar disponibilidad
 
     def __str__(self):
         return self.name
+
     
     @property
     def is_available(self):

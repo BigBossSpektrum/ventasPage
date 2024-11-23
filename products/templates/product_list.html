@@ -1,12 +1,11 @@
 {% extends 'home.html' %}
 
 {% block content %}
-    <h1>Product List</h1>
 
     <!-- Filtro por Categoría -->
     <div id="category-filter">
-        <h3>Filtrar por Categoría</h3>
         <form method="get">
+            <button href="{% url 'product_list' %}" type="submit" name="category" value="">Todos</button>
             {% for category in categories %}
                 <button type="submit" name="category" value="{{ category.id }}">
                     {{ category.name }}

@@ -93,6 +93,7 @@ menu {
 }
 
 menu a {
+    display: block; /* Hace que el enlace se comporte como un bloque */
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -100,6 +101,8 @@ menu a {
     border-radius: 5px;
     background-color: #4CAF50;
     transition: background-color 0.3s ease;
+    width: 100%; /* El ancho ocupará el 100% del contenedor padre */
+    box-sizing: border-box; /* Asegura que padding no aumente el tamaño total */
 }
 
 menu a:hover {
@@ -137,4 +140,10 @@ footer {
 
 .messages li {
     padding: 5px;
+}
+
+menu li {
+    list-style: none; /* Elimina cualquier decoración, como los puntos de la lista */
+    padding: 0; /* Opcional: elimina padding adicional */
+    margin: 0; /* Opcional: elimina márgenes adicionales */
 }
