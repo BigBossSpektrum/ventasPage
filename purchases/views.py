@@ -12,62 +12,86 @@ from django.contrib import messages
 # Vista para ver el carrito
 @login_required
 def view_cart(request):
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    context = {
-        'cart': cart,
-        'total_price': cart.total_price(),
-    }
-    return render(request, 'purchases/cart.html', context)
+    try:
+        # Obtener el carrito del usuario
+        cart = Cart.objects.get(user=request.user)
+        cart_items = cart.items.all()  # Todos los elementos del carrito
+        total = cart.total_price()  # Método en tu modelo Cart
+    except Cart.DoesNotExist:
+        # Si no hay carrito, la lista estará vacía y el total será 0
+        cart_items = []
+        total = 0
 
+    # Renderizar el template con los datos del carrito
+    return render(request, 'purchases/cart.html', {
+        'cart_items': cart_items,
+        'total': total,
+    })
+
+@login_required
 def add_to_cart(request, product_id):
-    # Obtenemos el carrito de la sesión
-    cart = request.session.get('cart', {})
+    product = Product.objects.get(id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)  # Crea el carrito si no existe
 
-    # Convertimos el ID del producto a string (las claves de la sesión deben ser strings)
-    product_id_str = str(product_id)
+    # Verificar si el producto ya está en el carrito
+    cart_item, item_created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not item_created:
+        cart_item.quantity += 1  # Incrementar cantidad si ya existe
+        cart_item.save()
 
-    if product_id_str in cart:
-        # Si el producto ya está en el carrito, incrementamos la cantidad
-        cart[product_id_str]['quantity'] += 1
-    else:
-        # Si el producto no está en el carrito, lo agregamos con cantidad 1
-        from products.models import Product  # Asegúrate de importar el modelo correctamente
-        product = Product.objects.get(id=product_id)
-
-        cart[product_id_str] = {
-            'product_id': product.id,
-            'name': product.name,
-            'price': float(product.price),  # Convertir a float por seguridad
-            'quantity': 1,
-        }
-
-    # Guardamos el carrito actualizado en la sesión
-    request.session['cart'] = cart
-
-    # Redirigimos a la página del carrito o donde prefieras
+    messages.success(request, f"¡'{product.name}' se ha agregado al carrito!")
     return redirect('view_cart')
+
+@login_required
+def remove_from_cart(request, item_id):
+    # Obtener el carrito del usuario actual
+    cart = get_object_or_404(Cart, user=request.user)
+
+    # Obtener el artículo a eliminar del carrito
+    cart_item = get_object_or_404(CartItem, id=item_id, cart=cart)
+
+    # Eliminar el artículo del carrito
+    cart_item.delete()
+
+    # Mensaje de confirmación
+    messages.success(request, f'Se ha eliminado "{cart_item.product.name}" del carrito.')
+
+    # Redirigir al carrito
+    return redirect('view_cart')
+    
+
 
 # Vista para realizar la compra
 @login_required
 def checkout(request):
-    cart = Cart.objects.get(user=request.user)
+    try:
+        # Obtener el carrito del usuario actual
+        cart = Cart.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        messages.error(request, 'No tienes productos en el carrito.')
+        return redirect('view_cart')
 
-    # Si el carrito está vacío, mostramos un mensaje de error
+    # Verificar si el carrito tiene artículos
     if cart.items.count() == 0:
         messages.error(request, 'No tienes productos en el carrito.')
         return redirect('view_cart')
 
-    # Enviar un correo de confirmación (simulado)
+    # Enviar un correo de confirmación con los detalles del carrito
+    cart_details = "\n".join(
+        [f"{item.product.name} - {item.quantity} x ${item.product.price}" for item in cart.items.all()]
+    )
     send_mail(
         'Nueva Compra en el Carrito',
-        f"El usuario {request.user.username} ha agregado productos al carrito.\n\nDetalles:\n" +
-        "\n".join([f"{item.product.name} - {item.quantity} x ${item.product.price}" for item in cart.items.all()]),
+        f"El usuario {request.user.username} ha realizado una compra.\n\nDetalles:\n{cart_details}",
         'from@example.com',
-        ['admin@example.com'],
+        ['admin@example.com'],  # Cambia a tu correo de administrador
         fail_silently=False,
     )
 
-    # Aquí podrías agregar la lógica de pago, realizar la compra, etc.
+    # Vaciar el carrito después de realizar la compra
+    cart.items.all().delete()
+
+    # Mensaje de éxito
     messages.success(request, '¡Tu compra ha sido realizada con éxito!')
     return redirect('home')
 

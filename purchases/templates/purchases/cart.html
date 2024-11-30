@@ -16,16 +16,16 @@
             </thead>
             <tbody>
                 {% for item in cart_items %}
-                <tr>
-                    <td>{{ item.product.name }}</td>
-                    <td>${{ item.product.price }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>${{ item.product.price|floatformat:2 }}</td>
-                    <td>
-                        <!-- Botón para eliminar -->
-                        <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove">Eliminar</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>${{ item.product.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.total_price|floatformat:2 }}</td>
+                        <td>
+                            <!-- Botón para eliminar-->
+                            <a href="{% url 'remove_from_cart' item.id %}" class="btn-remove">Eliminar</a>
+                        </td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
