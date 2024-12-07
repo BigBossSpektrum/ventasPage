@@ -59,3 +59,31 @@ def sell_product(request):
         form = ProductForm()
 
     return render(request, 'sell_product.html', {'form': form})
+
+@login_required
+def remove_from_cart(request, id):
+    logger.info(f"Intentando eliminar el producto con ID: {id}")
+    try:
+        # Obtener el carrito del usuario
+        cart = Cart.objects.get(user=request.user)
+
+        # Verificar si el producto existe en el carrito
+        cart_item = get_object_or_404(CartItem, cart=cart, product_id=id)
+
+        if cart_item.quantity > 1:
+            # Reducir la cantidad si es mayor a 1
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            # Si la cantidad es 1, eliminar el producto completamente del carrito
+            cart_item.delete()
+
+        # Mensaje de confirmación
+        messages.success(request, "El producto se eliminó correctamente del carrito.")
+
+    except Cart.DoesNotExist:
+        messages.error(request, "No tienes un carrito activo.")
+    except CartItem.DoesNotExist:
+        messages.error(request, "El producto no está en tu carrito.")
+
+    return redirect('view_cart')

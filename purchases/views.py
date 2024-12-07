@@ -100,21 +100,6 @@ def cart_detail(request):
     cart = Cart.objects.get_or_create(user=request.user)[0]
     return render(request, 'purchases/cart_detail.html', {'cart': cart})
 
-def remove_from_cart(request, product_id):
-    cart = request.session.get('cart', {})
-    product_id_str = str(product_id)
-
-    if product_id_str in cart:
-        if cart[product_id_str]['quantity'] > 1:
-            # Reduce la cantidad
-            cart[product_id_str]['quantity'] -= 1
-        else:
-            # Elimina el producto si la cantidad llega a 0
-            del cart[product_id_str]
-        request.session['cart'] = cart  # Actualiza el carrito en la sesión
-    
-    return redirect('view_cart')
-
 # Listar productos disponibles
 def available_products(request):
     products = Product.objects.all()

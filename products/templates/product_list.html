@@ -7,7 +7,7 @@
         <form method="get">
             <button href="{% url 'product_list' %}" type="submit" name="category" value="">Todos</button>
             {% for category in categories %}
-                <button type="submit" name="category" value="{{ category.id }}">
+                <button class="product_list_button" type="submit" name="category" value="{{ category.id }}">
                     {{ category.name }}
                 </button>
             {% endfor %}

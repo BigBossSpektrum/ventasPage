@@ -23,7 +23,7 @@
                         <td>${{ item.total_price|floatformat:2 }}</td>
                         <td>
                             <!-- Botón para eliminar-->
-                            <a href="{% url 'remove_from_cart' item.id %}" class="btn-remove">Eliminar</a>
+                            <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove">Eliminar</a>
                         </td>
                     </tr>
                 {% endfor %}
