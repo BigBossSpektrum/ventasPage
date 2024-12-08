@@ -82,9 +82,9 @@ def checkout(request):
     )
     send_mail(
         'Nueva Compra en el Carrito',
-        f"El usuario {request.user.username} ha realizado una compra.\n\nDetalles:\n{cart_details}",
+        f"El usuario {request.user.username}, Su nombre es: {request.user.full_name}, Telefono: {request.user.phone_number}, Email: {request.user.email}  ha realizado una compra.\n\nDetalles:\n{cart_details}",
         'from@example.com',
-        ['admin@example.com'],  # Cambia a tu correo de administrador
+        ['silvekerhernandez@gmail.com'],  # Cambia a tu correo de administrador
         fail_silently=False,
     )
 
