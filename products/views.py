@@ -41,7 +41,7 @@ def sell_product(request):
 @login_required
 def sell_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             # Guardar el nuevo producto en la base de datos
             product = form.save(commit=False)
