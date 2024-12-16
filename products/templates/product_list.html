@@ -1,11 +1,13 @@
 {% extends 'home.html' %}
 
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css\product_list.css' %}">
 
     <!-- Filtro por Categoría -->
     <div id="category-filter">
         <form method="get">
-            <button href="{% url 'product_list' %}" type="submit" name="category" value="">Todos</button>
+            <button class="product_list_button" href="{% url 'product_list' %}" type="submit" name="category" value="">Todos</button>
             {% for category in categories %}
                 <button class="product_list_button" type="submit" name="category" value="{{ category.id }}">
                     {{ category.name }}

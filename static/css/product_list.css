@@ -85,7 +85,7 @@ button:disabled {
 }
 
 /* Estilo para los botones de acción (añadir, editar, eliminar) */
-button.action-button {
+.product_list_button {
     padding: 10px 20px;
     margin: 5px;
     font-size: 14px;
@@ -94,6 +94,7 @@ button.action-button {
     background-color: #28a745; /* Verde para las acciones positivas */
     color: white;
     transition: background-color 0.3s ease;
+    
 }
 
 button.action-button:hover {
