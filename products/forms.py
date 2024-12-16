@@ -13,3 +13,8 @@ class ProductForm(forms.ModelForm):
 @property
 def is_available(self):
     return self.stock > 0
+
+class UpdateImageForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['img']
