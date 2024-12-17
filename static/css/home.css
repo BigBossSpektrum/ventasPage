@@ -81,6 +81,17 @@ header button:hover {
     background-color: #d32f2f;
 }
 
+.login {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 /* Estilos del menú lateral */
 menu {
     grid-area: b;

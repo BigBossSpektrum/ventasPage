@@ -21,9 +21,14 @@
         <header>
             <h1>Bienvenido a MyPlatform</h1>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'product_list' %}">Lista de Productos</a></li>
-                <!-- <li><a href="{% url 'sell_product' %}">Vender Productos</a></li> -->
+                <li><a href="{% url 'product_list' %}">Home</a></li>
+                
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'available_products' %}">Comprar Productos</a></li>
+                <li><a href="{% url 'sell_product' %}">Vender Productos</a></li>
+                    
+                {% endif %}
+                    
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
             </ul>
@@ -31,28 +36,23 @@
                 {% if user.is_authenticated %}
                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
-                        <a href="{% url 'profile' %}">{{ user.username }}</a>
+                        <a class="login" href="{% url 'profile' %}">{{ user.username }}</a>
+                        
                         <button type="submit">Logout</button>
                     </form>
                 {% else %}
-                    <a href="{% url 'login' %}">Login</a>
+                    <a class="login" href="{% url 'login' %}">Login</a>
                 {% endif %}
             </div>
-            {% if messages %}
+            <!-- {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
                         <li>{{ message }}</li>
                     {% endfor %}
                 </ul>
-            {% endif %}
+            {% endif %} -->
         </header>
         <menu>
-            <li>
-                <a href="{% url 'available_products' %}">Comprar</a>
-            </li>
-            <li>
-                <a href="{% url 'sell_product' %}">Vender</a>
-            </li>
             <li>
                 <a href="{% url 'view_cart' %}">Carrito</a>
             </li>
