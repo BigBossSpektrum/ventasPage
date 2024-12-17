@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css\product_list.css' %}">
 
     <!-- Filtro por Categoría -->
-    <div id="category-filter">
+    <div>
         <form method="get">
             <button class="product_list_button" href="{% url 'product_list' %}" type="submit" name="category" value="">Todos</button>
             {% for category in categories %}
