@@ -1,9 +1,13 @@
+from asyncio.log import logger
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic import ListView
+
+from purchases.models import Cart, CartItem
 from .models import Product, Category
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 # Vista para listar productos con filtrado por categoría usando ListView
 class ProductListView(ListView):
@@ -87,3 +91,8 @@ def remove_from_cart(request, id):
         messages.error(request, "El producto no está en tu carrito.")
 
     return redirect('view_cart')
+
+@login_required
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'product_detail.html', {'product': product})
