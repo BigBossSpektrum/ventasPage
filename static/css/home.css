@@ -11,7 +11,7 @@ body {
     display: grid;
     grid-template-areas:
         "a a a a a a a a a"
-        "b c c c c c c c c"
+        "c c c c c c c c c"
         "d d d d d d d d d";
     gap: 20px;
     grid-template-columns: repeat(9, 1fr);
@@ -81,15 +81,22 @@ header button:hover {
     background-color: #d32f2f;
 }
 
+/* Boton de login */
 .login {
     background-color: #4CAF50;
-    color: white;
+    color: rgb(7, 7, 7);
+    font-weight: bold;
+    text-transform: uppercase;
     border: none;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.login:hover {
+    background-color: #14841a;
 }
 
 /* Estilos del menú lateral */
@@ -157,4 +164,14 @@ menu li {
     list-style: none; /* Elimina cualquier decoración, como los puntos de la lista */
     padding: 0; /* Opcional: elimina padding adicional */
     margin: 0; /* Opcional: elimina márgenes adicionales */
+}
+
+/* Estilo de icono de compra */
+i {
+    padding: 10px;
+    color: yellow;
+}
+
+i:hover {
+    color: rgb(221, 221, 15);
 }
