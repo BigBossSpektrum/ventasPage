@@ -5,7 +5,7 @@
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: #F7FAFC;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -18,7 +18,7 @@
 
 /* Estilos para los encabezados de la tabla */
 .product-table th {
-    background-color: #4CAF50;
+    background-color: #0b8a46;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -75,9 +75,9 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
+/* button:hover {
+    background-color: #c92b2b;
+} */
 
 button:disabled {
     background-color: #d6d6d6;
@@ -91,10 +91,13 @@ button:disabled {
     font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
-    background-color: #28a745; /* Verde para las acciones positivas */
+    background-color: #ECC94B; /* Verde para las acciones positivas */
     color: white;
     transition: background-color 0.3s ease;
-    
+}
+
+.product_list_button:hover {
+    background-color: #E53E3E;
 }
 
 button.action-button:hover {
@@ -161,7 +164,7 @@ button.delete-button:hover {
 }
 
 /* Estilo para los botones */
-.product_list_button {
+/* .product_list_button {
     background-color: #45a049;
     color: white;
     padding: 0,1rem;
@@ -170,4 +173,4 @@ button.delete-button:hover {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
-}
+} */

@@ -13,12 +13,13 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='products', null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     stock = models.IntegerField(default=0)  # Indica la cantidad en inventario
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
     seller = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='products_for_sale', on_delete=models.CASCADE)
     is_sold = models.BooleanField(default=False)  # Indica si el producto está vendido
     is_available = models.BooleanField(default=True)  # Nuevo campo para indicar disponibilidad
+    
 
     def __str__(self):
         return self.name

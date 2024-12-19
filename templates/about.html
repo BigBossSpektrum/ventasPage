@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<div class="about-container">
+    <h1>Acerca de Nosotros</h1>
+    <div class="about-content">
+        <img src="{% static 'images/about_us.jpg' %}" alt="Acerca de Nosotros" class="about-image">
+        <p>
+            Bienvenido a nuestra plataforma de ventas, donde conectamos productos de calidad con compradores que buscan la mejor experiencia de compra. 
+            Nuestro objetivo es ofrecer un servicio confiable, seguro y fácil de usar para satisfacer las necesidades de nuestros clientes.
+        </p>
+        <p>
+            En nuestra tienda, encontrarás una variedad de categorías y productos cuidadosamente seleccionados para garantizar tu satisfacción. 
+            Nos esforzamos por brindar un servicio al cliente excepcional y precios competitivos.
+        </p>
+        <h2>Nuestra Misión</h2>
+        <p>
+            Nuestra misión es facilitar las compras en línea, conectando a compradores con productos de alta calidad 
+            y brindando una experiencia que inspire confianza y comodidad.
+        </p>
+        <h2>Contacto</h2>
+        <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
+        <ul>
+            <li>Correo: soporte@mi-tienda.com</li>
+            <li>Teléfono: +34 123 456 789</li>
+            <li>Dirección: Calle Comercio 123, Ciudad, País</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

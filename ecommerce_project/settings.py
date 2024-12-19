@@ -179,3 +179,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'silvekerhernandez@gmail.com'
 EMAIL_HOST_PASSWORD = 'pldifgxnjtuzelln'
+
+#formatear los números según las reglas locales
+USE_L10N = True

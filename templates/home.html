@@ -14,9 +14,10 @@
 <body>
     <div class="grid-container">
         <header>
-            <h1>Bienvenido a MyPlatform</h1>
             <ul>
-                <li><a href="{% url 'product_list' %}">Home</a></li>
+                <li><img src="{% static 'images/logo.png' %}" alt=""></li>
+                <li><a href="{% url 'product_list' %}"><h1>LagoTech Innovations</h1></a></li>
+                <!-- <li><a href="{% url 'product_list' %}">Home</a></li> -->
                 
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'available_products' %}">Comprar Productos</a></li>
@@ -24,8 +25,9 @@
                     
                 {% endif %}
                     
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="{% url 'about' %}">Nosotros
+                </a></li>
+                <li><a href="{% url 'contact' %}">Contactanos</a></li>
             </ul>
             <div>
                 {% if user.is_authenticated %}

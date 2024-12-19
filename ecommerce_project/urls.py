@@ -26,6 +26,9 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('products/', include('purchases.urls')),
     path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('send_contact_form/', views.send_contact_form, name='send_contact_form'),
     path ('users//', include('users.urls')),
 
 ]

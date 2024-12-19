@@ -1,6 +1,6 @@
 /* Estilo general para el cuerpo */
 body {
-    background-color: #f4f4f9;
+    background-color: #1A202C;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -22,13 +22,14 @@ body {
 /* Estilos para los elementos dentro del grid */
 header {
     grid-area: a;
-    background-color: #282bda;
-    color: white;
+    background-color: #4d97c9;
+    color: #FFFF;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius:  8px;
 }
 
 header h1 {
@@ -37,6 +38,7 @@ header h1 {
 }
 
 header ul {
+    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -68,7 +70,7 @@ header form {
 }
 
 header button {
-    background-color: #f44336;
+    background-color: #af1a27;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -83,7 +85,7 @@ header button:hover {
 
 /* Boton de login */
 .login {
-    background-color: #4CAF50;
+    background-color: #b1ce31;
     color: rgb(7, 7, 7);
     font-weight: bold;
     text-transform: uppercase;
@@ -96,7 +98,7 @@ header button:hover {
 }
 
 .login:hover {
-    background-color: #14841a;
+    background-color: #cae455;
 }
 
 /* Estilos del menú lateral */
@@ -139,7 +141,7 @@ main {
 /* Estilos para el pie de página */
 footer {
     grid-area: d;
-    background-color: #282bda;
+    background-color: #4d97c9;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -174,4 +176,13 @@ i {
 
 i:hover {
     color: rgb(221, 221, 15);
+}
+
+/* estilos de imagen de producto */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60px;
 }

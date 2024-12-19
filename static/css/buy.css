@@ -20,6 +20,12 @@
     overflow: hidden;
 }
 
+.product-table-header {
+    background-color: #0b8a46;
+    color: white;
+    text-transform: uppercase;
+}
+
 .product-table th, .product-table td {
     padding: 12px 15px;
     border: 1px solid #dddddd;
@@ -27,7 +33,7 @@
 }
 
 .product-table th {
-    background-color: #16d85d;
+    background-color: #0b8a46;
     font-weight: bold;
 }
 
